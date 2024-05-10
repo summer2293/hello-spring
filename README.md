@@ -145,6 +145,8 @@ spring-boot-starter-test
   - 통합테스트: spring 부터 시작해서 테스트 하는 방식
   - JDBC Template
   - 반복적인 코드들을 제거해주는 라이브러리. 
+  - JPA
+  - sql 쿼리또한 ORM 맵핑으로 처리하는 방식
 ### REF
 - https://sharonprogress.tistory.com/281
 - https://u-it.tistory.com/300

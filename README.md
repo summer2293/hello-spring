@@ -18,7 +18,7 @@
   - MVC 에서 컨트롤러가 비즈니스 로직 처리를 마친 후에 어떤 뷰로 응답을 생성할지 결정하는 역할 
   - 컨트롤러가 문자열 형태의 값을 반환하면, 해당 문자열을 템플릿 파일에 찾아 어떤 뷰로 응답을 생성할지 결정을 한다.
 ----
-### 기본 라이브러리
+#### 기본 라이브러리
 spring-boot-starter-web
 spring-boot-starter-tomcat: 톰캣 (웹서버)
 spring-webmvc: 스프링 웹 MVC 
@@ -32,7 +32,7 @@ spring-boot-starter-test
 - mockito: 목 라이브러리
 - assertj: 테스트 코드를 좀 더 편하게 작성하게 도와주는 라이브러리 spring-test: 스프링 통합 테스트 지원
 ---
-### view 생성하기
+#### view 생성하기
 - 웰컴 페이지 만들기 
 - src/main/resources/static 파일에 index.html 을 넣으면 spirng 에서 자동으로 정적페이지를 읽어 루트페이지를 생성한다.
 - 웹 브라우저에서 /hello 로 던지면 스프링 부트는 톰캣이란 웹서버를 내장해서,
@@ -42,7 +42,7 @@ spring-boot-starter-test
 -  <p th:text="'안녕하세요. ' + ${data}" >안녕하세요. 손님</p>
 - 여기 값에 {data} 에 템플릿 엔진이 값을 넣어준다.
 
-### 빌드
+#### 빌드
 ```
 `./gradlew build`
 `cd build/libs`
@@ -50,6 +50,17 @@ spring-boot-starter-test
 ```
 로 빌드할 수 있다.
 서버 배포할 때는 이 파일만 복사해서 서버에 넣고 실행하면 서버에서 스프링이 동작하게 된다.
+
+## chap 02. 스프링 웹 개발 기초
+웹 개발 방법
+- 정적 컨텐츠
+  - 파일 그대로 전달하는 방식
+  - resources/static 에 파일을 넣으면 된다.
+  - 요청이 들어오면 내장 서버가 일단 controller 를 찾고, 없다면 static 쪽 파일이 있는지 확인 후 맵핑해서 내려준다.
+- MVC와 템플릿 엔진
+  - 서버에서 프로그래밍해서 HTML파일을 동적으로 내려주는 것
+- API
+  - HTML 없이 json 데이터 포맷으로 전달
 
 ### REF
 - https://sharonprogress.tistory.com/281

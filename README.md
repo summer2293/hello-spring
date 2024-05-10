@@ -120,5 +120,31 @@ spring-boot-starter-test
 - 로딩시점에 조립 이후에는 바뀔 일이 없다.
 - 직접 사용하면 빈에서 객체만 바꾸면 되서 깔끔하게 쓸 수 있다. 
 - 스프링 컨테이너 올라가는 것들만 @Autowired가 적용된다.
+
+## chap 05. 회원 관리 예제 - MVC 개발
+- form 으로 값을 전달하는 경우 
+- form 값을 받을 데이터 모델 생성 (memberForm)
+- 요청되면 해당 컨트롤러의 parmas에 맵핑이 됨 
+- 그 값을 가지고 멤버 생성
+- "redirect:/" 하면 알아서 `/`로 리다이렉션 된다.
+- 동적엔진을 통해 list 전달하면 알아서 처리할 수 있게 작동
+- 현재 메모리에 저장하기때문에 껏다 키면 다 날라감는 문제.
+- 그래서 데이터베이스를 사용해서 바꾸려고 한다.
+
+
+## chap 06. H2 데이터 베이스 설치
+- h2 설치
+- JDBC 방식
+- build.gradle 에 라이브러리 추가
+- 테스트
+  - @SpringBootTest
+  - 를 넣으면 스프링을 아예 띄워서 실행한다.
+  - @Transactional
+  - 테스트케이스에 붙으면 자동으로 롤백해준다. 
+  - 단위테스트: 순수하게 java code
+  - 통합테스트: spring 부터 시작해서 테스트 하는 방식
+  - JDBC Template
+  - 반복적인 코드들을 제거해주는 라이브러리. 
 ### REF
 - https://sharonprogress.tistory.com/281
+- https://u-it.tistory.com/300

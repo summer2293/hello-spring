@@ -2,16 +2,14 @@ package hello.hellospring.repository;
 
 import hello.hellospring.domain.Member;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MemoryMemberRepositoryTest {
-    MemoryMemberRespository repository = new MemoryMemberRespository();
+    MemoryMemberRepository repository = new MemoryMemberRepository();
 
     // 테스트의 순서는 보장이 안된다.
     // 따라서 다른 객체가 저장이 되어 다른 객체가 나와버렸다.

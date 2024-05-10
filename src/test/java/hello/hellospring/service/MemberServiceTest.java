@@ -1,10 +1,8 @@
 package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
-import hello.hellospring.repository.MemberRepository;
-import hello.hellospring.repository.MemoryMemberRespository;
+import hello.hellospring.repository.MemoryMemberRepository;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,11 +15,11 @@ class MemberServiceTest {
     // 그래서 멤버 메모리 리포지토리랑, 테스트 멤버 메모리 리포지토리가 다를 수도 있다.
     // 같은걸로 테스트해야하는데, 다른 객체로 해야하는 문제가 있다. 이걸 해결하기 위해 컨스트럭터로 바꾼다.
     MemberService memberService;
-    MemoryMemberRespository memberRepository;
+    MemoryMemberRepository memberRepository;
 
     @BeforeEach
     public void beforeEach() {
-        memberRepository = new MemoryMemberRespository();
+        memberRepository = new MemoryMemberRepository();
         memberService = new MemberService(memberRepository);
     }
     @AfterEach

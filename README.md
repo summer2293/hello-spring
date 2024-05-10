@@ -112,6 +112,13 @@ spring-boot-starter-test
 - @Service, @Controller, @Repository 안에도 @Component 메서드가 들어있다.
 - 해당 컴포넌트를 걸고, @autowired를 걸면 스프링이 자동으로 내부 값을 맵핑 시켜준다.
 
-자바 코드로 직접 스프링 빈 등록하는 방법
+#### 자바 코드로 직접 스프링 빈 등록하기
+- DI 에는 필드, 셋터, 생성자 주입이 있다.
+- 현재는 생성자주입. 생성자를 통해 의존성 주입을 함
+- 필드에다가 @Autowired를 하면 바꿀 수 있는 방법이 없다.
+- Setter 주입. 이 경우에는 public 이 되어야함. 중간에 바꾸면 문제가 생긴다.
+- 로딩시점에 조립 이후에는 바뀔 일이 없다.
+- 직접 사용하면 빈에서 객체만 바꾸면 되서 깔끔하게 쓸 수 있다. 
+- 스프링 컨테이너 올라가는 것들만 @Autowired가 적용된다.
 ### REF
 - https://sharonprogress.tistory.com/281

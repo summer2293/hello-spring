@@ -61,7 +61,14 @@ spring-boot-starter-test
   - 서버에서 프로그래밍해서 HTML파일을 동적으로 내려주는 것
   - view resolver 가 controller 가 반환한 템플릿 이름과 일치하는 템플릿을 찾고, 템플릿 엔진이 값을 렌더링 후 html 전달
 - API
-  - HTML 없이 json 데이터 포맷으로 전달
-
+  - HTML 없이 json 데이터 포맷으로 전달, ResponseBody 어노테이션을 사용한다.
+  - response body 를 사용하면 톰캣 내장 서버에서 컨테이너에 던짐
+  - responsebody annotation 이 붙어있지 않으면, view resolver 에게 던지는데
+  - responsebody 가 있음 httpmessage converter 가 동작한다.
+  - 객체면 jsonconverter, 문자면 stringconverter이 동작한다. 
+  - jsonconverter는 (MappingJackson2HttpMessageConverter) 라이브러리 사용
+  - http 에 응답을 던져야 겠다고 넘긴다.
+  - 객체를 줄 경우에는 스프링 입장에서는 json 방식으로 만들어서 기본으로 http 응답에 반환하는게 기본 정책이다.
+  - 클라이언트의 HTTP Accept 해더와 서버의 컨트롤러 반환 타입 정보 둘을 조합해서 반환한다.
 ### REF
 - https://sharonprogress.tistory.com/281

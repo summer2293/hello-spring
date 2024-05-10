@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HelloController {
@@ -28,5 +29,35 @@ public class HelloController {
     public String helloMvc(@RequestParam(value = "name", required = false, defaultValue = "meow") String name, Model model) {
         model.addAttribute("name", name);
         return "hello-template";
+    }
+
+    @GetMapping("hello-string")
+    @ResponseBody // 응답 값을 직접 넣어주겠다.
+    public String helloString(@RequestParam(value = "name", required = false, defaultValue = "meow") String name, Model model) {
+        return "hello" + name; // 이러면 string 값이 그대로 내려간다.
+    }
+
+    // 객체로 내리고 싶을 경우
+    @GetMapping("hello-api")
+    @ResponseBody // 응답 값을 직접 넣어주겠다.
+    public Hello helloApi(@RequestParam(value = "name", required = false, defaultValue = "meow") String name, Model model) {
+        // response body 를 사용하면 톰캣 내장 서버에서 컨테이너에 던짐
+        // responsebody annotation 이 붙어있지 않으면, view resolver 에게 던지는데
+        // responsebody 가 있음 httpmessage converter 가 동작한다.
+        // 객체면 jsonconverter, 문자면 stringconverter이 동작한다.
+        // http 에 응답을 던져야 겠다고 넘김.
+        // 객체를 줄 경우에는 스프링 입장에서는 json 방식으로 만들어서 기본으로 http 응답에 반환하는게 기본 정책이다.
+        Hello hello = new Hello();
+        hello.setName(name);
+        return hello;
+    }
+    public class Hello {
+        private String name;
+        public String getName() {
+            return name;
+        }
+        public void setName(String name) {
+            this.name = name;
+        }
     }
 }

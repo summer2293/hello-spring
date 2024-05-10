@@ -59,6 +59,7 @@ spring-boot-starter-test
   - 요청이 들어오면 내장 서버가 일단 controller 를 찾고, 없다면 static 쪽 파일이 있는지 확인 후 맵핑해서 내려준다.
 - MVC와 템플릿 엔진
   - 서버에서 프로그래밍해서 HTML파일을 동적으로 내려주는 것
+  - view resolver 가 controller 가 반환한 템플릿 이름과 일치하는 템플릿을 찾고, 템플릿 엔진이 값을 렌더링 후 html 전달
 - API
   - HTML 없이 json 데이터 포맷으로 전달
 

@@ -1,8 +1,10 @@
 package hello.hellospring.controller;
 
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HelloController {
@@ -17,5 +19,14 @@ public class HelloController {
     public String hello(Model model) {
         model.addAttribute("data", "hello!!!");
         return "hello";
+    }
+
+    // request 가 오면 톰캣서버가 컨테이너를 거침
+    // return 값을 뷰 리졸버가 받아 템플릿을 찾음
+    // 템플릿 엔진이 렌더링해서 html 을 반환
+    @GetMapping("hello-mvc")
+    public String helloMvc(@RequestParam(value = "name", required = false, defaultValue = "meow") String name, Model model) {
+        model.addAttribute("name", name);
+        return "hello-template";
     }
 }
